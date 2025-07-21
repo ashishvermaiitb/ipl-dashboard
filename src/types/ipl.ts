@@ -6,6 +6,12 @@ export interface Team {
   color?: string;
 }
 
+export enum MatchStatus {
+  UPCOMING = "upcoming",
+  LIVE = "live",
+  COMPLETED = "completed",
+}
+
 export interface Match {
   id: string;
   team1: Team;
@@ -13,54 +19,68 @@ export interface Match {
   date: string;
   time: string;
   venue: string;
-  status: "upcoming" | "live" | "completed";
+  status: MatchStatus;
   result?: string;
-  isLive?: boolean;
-  liveScore?: {
-    team1Score?: string;
-    team2Score?: string;
-    overs?: string;
-    currentBatsman?: string[];
-    currentBowler?: string;
-    lastBalls?: string[];
-  };
 }
 
-export interface PointsTableEntry {
-  position: number;
-  team: Team;
-  played: number;
-  won: number;
-  lost: number;
-  tied: number;
-  noResult: number;
-  points: number;
-  netRunRate: number;
-  form?: string[];
+export interface Score {
+  runs: number;
+  wickets: number;
+  overs: number;
 }
 
-export interface Schedule {
-  matches: Match[];
-  lastUpdated: string;
+export interface Batsman {
+  name: string;
+  runs: number;
+  balls: number;
+  fours: number;
+  sixes: number;
+}
+
+export interface Bowler {
+  name: string;
+  overs: number;
+  maidens: number;
+  runs: number;
+  wickets: number;
+}
+
+export interface Over {
+  over: number;
+  runs: (number | string)[];
+}
+
+export interface CommentaryItem {
+  time: string;
+  text: string;
 }
 
 export interface LiveMatch extends Match {
-  isLive: true;
-  liveScore: NonNullable<Match["liveScore"]>;
-  commentary?: string[];
-  currentOver?: string;
-  target?: number;
-  required?: {
-    runs: number;
-    balls: number;
-    runRate: number;
-  };
+  team1Score?: Score;
+  team2Score?: Score;
+  currentBatsmen?: Batsman[];
+  currentBowler?: Bowler;
+  recentOvers?: Over[];
+  commentary?: CommentaryItem[];
+  currentRunRate?: number;
+  requiredRunRate?: number;
+  lastWicket?: string;
 }
 
-export interface DashboardData {
-  liveMatch?: LiveMatch;
+export interface PointsTableEntry {
+  team: Team;
+  matches: number;
+  won: number;
+  lost: number;
+  tied: number;
+  points: number;
+  netRunRate: number;
+}
+
+export interface IPLData {
+  teams: Team[];
   upcomingMatches: Match[];
+  liveMatch?: LiveMatch;
   pointsTable: PointsTableEntry[];
-  schedule: Schedule;
-  lastUpdated: string;
+  completeSchedule: Match[];
 }
