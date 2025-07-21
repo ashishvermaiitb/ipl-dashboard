@@ -97,12 +97,18 @@ export default function LiveMatchCard() {
 
   return (
     <Card className="overflow-hidden border-2 border-blue-500 dark:border-blue-600">
-      <div className="bg-blue-600 text-white py-2 px-4 flex items-center justify-between dark:bg-blue-700">
-        <div className="flex items-center space-x-2">
-          <div className="h-2 w-2 rounded-full bg-red-500 animate-pulse"></div>
-          <span className="font-bold">LIVE</span>
+      <div className="bg-blue-600 text-white py-2 px-4 flex flex-col md:flex-row md:items-center md:justify-between dark:bg-blue-700">
+        <div className="flex flex-col">
+          <div className="flex items-center space-x-2">
+            <div className="h-2 w-2 rounded-full bg-red-500 animate-pulse"></div>
+            <span className="font-bold">LIVE</span>
+          </div>
+          <span className="text-xs text-white mt-1">
+            (Data shown may be dummy if live fetch fails)
+          </span>
         </div>
-        <div className="text-sm">
+
+        <div className="text-sm mt-2 md:mt-0">
           {formatDate(liveMatch.date)} • {liveMatch.time}
         </div>
       </div>
