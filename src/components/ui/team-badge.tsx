@@ -16,9 +16,9 @@ export function TeamBadge({
   className,
 }: TeamBadgeProps) {
   const sizeMap = {
-    sm: 24,
-    md: 32,
-    lg: 48,
+    sm: 28,
+    md: 36,
+    lg: 56,
   };
 
   const textSizeMap = {
@@ -32,21 +32,27 @@ export function TeamBadge({
   return (
     <div className={cn("flex items-center gap-2", className)}>
       <div
-        className="relative flex-shrink-0 rounded-full border-2 overflow-hidden team-badge"
+        className="relative flex-shrink-0 rounded-full border-2 overflow-hidden shadow-sm team-badge"
+        data-team={team.id}
         style={{
           width: logoSize,
           height: logoSize,
-          borderColor: team.color || "#555",
+          borderColor: team.color || "#ccc",
+          backgroundColor: "white",
         }}
       >
         {team.logo ? (
-          <Image
-            src={team.logo}
-            alt={team.name}
-            width={logoSize}
-            height={logoSize}
-            className="object-cover"
-          />
+          <div className="relative w-full h-full flex items-center justify-center bg-white">
+            <Image
+              src={team.logo}
+              alt={team.name}
+              width={logoSize * 0.8}
+              height={logoSize * 0.8}
+              className="object-contain"
+              priority={true}
+              quality={95}
+            />
+          </div>
         ) : (
           <div
             className="w-full h-full flex items-center justify-center font-bold text-white"
@@ -60,7 +66,7 @@ export function TeamBadge({
       {showName && (
         <span
           className={cn(
-            "font-medium text-gray-900 dark:text-gray-100 team-name",
+            "font-medium text-gray-900 dark:text-gray-100",
             textSizeMap[size]
           )}
         >

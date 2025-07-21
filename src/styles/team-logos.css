@@ -1,0 +1,90 @@
+.team-badge {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+}
+
+.team-badge::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.1);
+  pointer-events: none;
+}
+
+/* Team-specific color treatments */
+.team-badge[data-team="csk"] {
+  background-color: #ffff3c;
+  border-color: #ffff3c;
+}
+
+.team-badge[data-team="mi"] {
+  background-color: #004ba0;
+  border-color: #004ba0;
+}
+
+.team-badge[data-team="rcb"] {
+  background-color: #ff0000;
+  border-color: #ff0000;
+}
+
+.team-badge[data-team="srh"] {
+  background-color: #ff822a;
+  border-color: #ff822a;
+}
+
+.team-badge[data-team="dc"] {
+  background-color: #0078bc;
+  border-color: #0078bc;
+}
+
+.team-badge[data-team="kkr"] {
+  background-color: #3a225d;
+  border-color: #3a225d;
+}
+
+.team-badge[data-team="rr"] {
+  background-color: #ea1a85;
+  border-color: #ea1a85;
+}
+
+.team-badge[data-team="pbks"] {
+  background-color: #d11d9b;
+  border-color: #d11d9b;
+}
+
+.team-badge[data-team="gt"] {
+  background-color: #1c1c1c;
+  border-color: #1c1c1c;
+}
+
+.team-badge[data-team="lsg"] {
+  background-color: #a72056;
+  border-color: #a72056;
+}
+
+/* Dark mode adjustments */
+.dark .team-badge {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2), 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.dark .team-badge::after {
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+/* Animation for logo hover */
+.team-badge img {
+  transition: transform 0.2s ease-in-out;
+}
+
+.team-badge:hover img {
+  transform: scale(1.1);
+}

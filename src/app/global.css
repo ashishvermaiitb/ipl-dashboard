@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import "../styles/team-logos.css";
 
 :root {
   --foreground-rgb: 0, 0, 0;
@@ -30,107 +31,21 @@ body {
     rgb(var(--background-start-rgb));
 }
 
-/* Improved section headers */
-section h2 {
-  color: #111827 !important; /* dark gray, almost black */
-  font-weight: 700 !important;
-  font-size: 1.25rem !important;
-  line-height: 1.75rem !important;
-  letter-spacing: -0.025em !important;
-  margin-bottom: 1rem !important;
-}
-
-.dark section h2 {
-  color: #f3f4f6 !important; /* white for dark mode */
-}
-
 /* Improved text contrast */
 .text-gray-500 {
-  color: #4b5563 !important; /* darker gray for better contrast */
+  color: rgb(75, 85, 99) !important;
 }
 
 .dark .text-gray-500 {
-  color: #9ca3af !important;
+  color: rgb(156, 163, 175) !important;
 }
 
 .text-gray-400 {
-  color: #4b5563 !important; /* made darker for better visibility */
+  color: rgb(107, 114, 128) !important;
 }
 
 .dark .text-gray-400 {
-  color: #9ca3af !important;
-}
-
-/* Match schedule specific styles */
-.match-date-header {
-  color: #111827 !important;
-  font-weight: 600 !important;
-  background-color: white !important;
-  padding: 0.5rem 0 !important;
-  position: sticky !important;
-  top: 0 !important;
-  z-index: 10 !important;
-}
-
-.dark .match-date-header {
-  color: #f3f4f6 !important;
-  background-color: #111827 !important;
-}
-
-.match-time {
-  color: #111827 !important;
-  font-weight: 500 !important;
-}
-
-.dark .match-time {
-  color: #e5e7eb !important;
-}
-
-.match-venue {
-  color: #4b5563 !important;
-  font-weight: 400 !important;
-}
-
-.dark .match-venue {
-  color: #9ca3af !important;
-}
-
-.status-badge {
-  font-weight: 600 !important;
-  padding: 0.25rem 0.75rem !important;
-  border-radius: 9999px !important;
-  font-size: 0.75rem !important;
-  line-height: 1rem !important;
-}
-
-.status-live {
-  background-color: rgba(239, 68, 68, 0.15) !important;
-  color: rgb(185, 28, 28) !important;
-}
-
-.dark .status-live {
-  background-color: rgba(239, 68, 68, 0.25) !important;
-  color: rgb(248, 113, 113) !important;
-}
-
-.status-upcoming {
-  background-color: rgba(16, 185, 129, 0.15) !important;
-  color: rgb(5, 150, 105) !important;
-}
-
-.dark .status-upcoming {
-  background-color: rgba(16, 185, 129, 0.25) !important;
-  color: rgb(52, 211, 153) !important;
-}
-
-.status-completed {
-  background-color: rgba(107, 114, 128, 0.15) !important;
-  color: rgb(55, 65, 81) !important;
-}
-
-.dark .status-completed {
-  background-color: rgba(107, 114, 128, 0.25) !important;
-  color: rgb(209, 213, 219) !important;
+  color: rgb(156, 163, 175) !important;
 }
 
 /* Better contrast for headings */
@@ -140,7 +55,7 @@ h3,
 h4,
 h5,
 h6 {
-  color: #111827 !important;
+  color: rgb(17, 24, 39);
 }
 
 .dark h1,
@@ -149,108 +64,113 @@ h6 {
 .dark h4,
 .dark h5,
 .dark h6 {
-  color: #f3f4f6 !important;
+  color: rgb(243, 244, 246);
 }
 
 /* Improved card styling */
 .card,
 .bg-white {
-  background-color: white !important;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+  background-color: white;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .dark .card,
 .dark .bg-white {
-  background-color: #1f2937 !important;
-  color: #f3f4f6 !important;
+  background-color: rgb(31, 41, 55);
+  color: rgb(243, 244, 246);
 }
 
 /* Improved button contrast */
 .btn,
 button {
-  font-weight: 500 !important;
-}
-
-/* Team badge enhancements */
-.team-badge {
-  border: 2px solid rgba(0, 0, 0, 0.1) !important;
-}
-
-/* Team name color */
-.team-name {
-  color: #111827 !important;
-  font-weight: 500 !important;
-}
-
-.dark .team-name {
-  color: #f3f4f6 !important;
+  font-weight: 500;
 }
 
 /* Table improvements */
 table th {
-  color: #111827 !important;
-  font-weight: 600 !important;
-  background-color: #f3f4f6 !important;
+  color: rgb(17, 24, 39);
+  font-weight: 600;
 }
 
 table td {
-  color: #374151 !important;
+  color: rgb(55, 65, 81);
 }
 
 .dark table th {
-  color: #f3f4f6 !important;
-  background-color: #374151 !important;
+  color: rgb(243, 244, 246);
 }
 
 .dark table td {
-  color: #d1d5db !important;
+  color: rgb(209, 213, 219);
 }
 
 /* Better visibility for links */
 a {
-  color: rgb(var(--primary-color)) !important;
-  font-weight: 500 !important;
+  color: rgb(var(--primary-color));
+  font-weight: 500;
 }
 
 a:hover {
-  color: rgb(var(--primary-color-dark)) !important;
+  color: rgb(var(--primary-color-dark));
 }
 
 /* Improve mobile navigation */
 .mobile-nav a {
-  color: #111827 !important;
-  font-weight: 500 !important;
+  color: rgb(31, 41, 55);
+  font-weight: 500;
 }
 
 .dark .mobile-nav a {
-  color: #f3f4f6 !important;
+  color: rgb(243, 244, 246);
 }
 
 /* Match card styling improvements */
 .match-card {
-  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Status badges with better contrast */
+.status-badge {
+  font-weight: 600;
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+}
+
+.status-live {
+  background-color: rgba(239, 68, 68, 0.15);
+  color: rgb(185, 28, 28);
+}
+
+.status-upcoming {
+  background-color: rgba(16, 185, 129, 0.15);
+  color: rgb(5, 150, 105);
+}
+
+.status-completed {
+  background-color: rgba(107, 114, 128, 0.15);
+  color: rgb(75, 85, 99);
 }
 
 /* Points table styling */
 .points-table th {
-  background-color: #f3f4f6 !important;
-  color: #111827 !important;
+  background-color: rgb(243, 244, 246);
+  color: rgb(31, 41, 55);
 }
 
 .dark .points-table th {
-  background-color: #374151 !important;
-  color: #f3f4f6 !important;
+  background-color: rgb(31, 41, 55);
+  color: rgb(243, 244, 246);
 }
 
 .playoff-zone {
-  background-color: rgba(59, 130, 246, 0.1) !important;
+  background-color: rgba(59, 130, 246, 0.1);
 }
 
 /* Loading state styling */
 .loading-pulse {
-  background-color: #e5e7eb !important;
+  background-color: rgb(229, 231, 235);
 }
 
 .dark .loading-pulse {
-  background-color: #4b5563 !important;
+  background-color: rgb(55, 65, 81);
 }
