@@ -1,7 +1,7 @@
-// src/app/layout.tsx
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import MobileNav from "@/components/mobile-nav";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,7 +20,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <div className="min-h-screen bg-gray-50">
-          <header className="bg-blue-600 text-white py-4 px-4 md:px-6 shadow-md">
+          <header className="bg-blue-600 text-white py-4 px-4 md:px-6 shadow-md sticky top-0 z-40">
             <div className="container mx-auto flex items-center justify-between">
               <h1 className="text-xl md:text-2xl font-bold">
                 IPL T20 Live Dashboard
@@ -29,6 +29,9 @@ export default function RootLayout({
                 <a href="#live" className="hover:underline font-medium">
                   Live Match
                 </a>
+                <a href="#upcoming" className="hover:underline font-medium">
+                  Upcoming
+                </a>
                 <a href="#points" className="hover:underline font-medium">
                   Points Table
                 </a>
@@ -36,22 +39,7 @@ export default function RootLayout({
                   Schedule
                 </a>
               </nav>
-              <button className="md:hidden">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M4 6h16M4 12h16M4 18h16"
-                  />
-                </svg>
-              </button>
+              <MobileNav />
             </div>
           </header>
           <main className="container mx-auto py-6 px-4 md:px-6">

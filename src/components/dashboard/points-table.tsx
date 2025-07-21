@@ -1,11 +1,11 @@
 "use client";
 
-import { useIPLData } from "@/hooks/use-ipl-data";
+import { useIPLDataContext } from "@/components/data-provider";
 import { TeamBadge } from "@/components/ui/team-badge";
 import { Button } from "@/components/ui/button";
 
 export default function PointsTable() {
-  const { data, isLoading, error, refetch } = useIPLData();
+  const { data, isLoading, error, refetch } = useIPLDataContext();
 
   if (isLoading) {
     return (

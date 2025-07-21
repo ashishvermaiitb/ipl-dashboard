@@ -1,26 +1,58 @@
 import { NextResponse } from "next/server";
-import { MatchStatus, PointsTableEntry, Match, LiveMatch } from "@/types/ipl";
+import { getIPLData } from "@/utils/api-scraper";
 import { dummyData } from "@/utils/dummy-data";
+
+// In-memory cache
+let cachedData = null;
+let lastFetchTime = 0;
+const CACHE_TTL = 5 * 60 * 1000; // 5 minutes in milliseconds
 
 /**
  * GET handler for the scrape API route
- * Fetches IPL data from iplt20.com or returns dummy data
+ * Fetches IPL data or returns cached/dummy data
  */
 export async function GET() {
   try {
-    // TODO: Implement actual web scraping logic here
-    // For now, we'll use dummy data
+    const now = Date.now();
 
-    // In a real implementation, you would:
-    // 1. Use a library like cheerio or puppeteer to scrape iplt20.com
-    // 2. Parse the HTML to extract match data, points table, etc.
-    // 3. Format the data according to our defined types
-    // 4. Cache the results to minimize unnecessary scraping
+    // Check if we have valid cached data
+    if (cachedData && now - lastFetchTime < CACHE_TTL) {
+      return NextResponse.json(cachedData, {
+        status: 200,
+        headers: {
+          "Cache-Control": "public, max-age=300",
+          "X-Cache": "HIT",
+        },
+      });
+    }
 
-    // Simulate API delay
-    await new Promise((resolve) => setTimeout(resolve, 500));
+    // Fetch IPL data
+    try {
+      const data = await getIPLData();
 
-    return NextResponse.json(dummyData, { status: 200 });
+      // Update cache
+      cachedData = data;
+      lastFetchTime = now;
+
+      return NextResponse.json(data, {
+        status: 200,
+        headers: {
+          "Cache-Control": "public, max-age=300",
+          "X-Cache": "MISS",
+        },
+      });
+    } catch (error) {
+      console.error("Data fetching failed, falling back to dummy data:", error);
+
+      // If fetching fails, fall back to dummy data
+      return NextResponse.json(dummyData, {
+        status: 200,
+        headers: {
+          "Cache-Control": "public, max-age=300",
+          "X-Cache": "FALLBACK",
+        },
+      });
+    }
   } catch (error) {
     console.error("Failed to fetch IPL data:", error);
     return NextResponse.json(
@@ -30,5 +62,5 @@ export async function GET() {
   }
 }
 
-// Revalidate data every 5 minutes
+// Cache control using Next.js config
 export const revalidate = 300;

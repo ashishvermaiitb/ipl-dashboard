@@ -1,9 +1,9 @@
-// src/app/page.tsx
 import DashboardLayout from "./dashboard-layout";
 import LiveMatchCard from "@/components/dashboard/live-match-card";
 import PointsTable from "@/components/dashboard/points-table";
 import UpcomingMatches from "@/components/dashboard/upcoming-matches";
 import MatchSchedule from "@/components/dashboard/match-schedule";
+import TeamStats from "@/components/dashboard/team-stats";
 
 export default function Home() {
   return (
@@ -22,13 +22,23 @@ export default function Home() {
           <UpcomingMatches />
         </section>
 
-        <section
-          id="points"
-          className="bg-white rounded-lg shadow-sm p-4 md:p-6"
-        >
-          <h2 className="text-xl font-bold mb-4">Points Table</h2>
-          <PointsTable />
-        </section>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <section
+            id="points"
+            className="bg-white rounded-lg shadow-sm p-4 md:p-6"
+          >
+            <h2 className="text-xl font-bold mb-4">Points Table</h2>
+            <PointsTable />
+          </section>
+
+          <section
+            id="team-stats"
+            className="bg-white rounded-lg shadow-sm p-4 md:p-6"
+          >
+            <h2 className="text-xl font-bold mb-4">Team Statistics</h2>
+            <TeamStats />
+          </section>
+        </div>
 
         <section
           id="schedule"

@@ -1,13 +1,13 @@
 "use client";
 
-import { useIPLData } from "@/hooks/use-ipl-data";
+import { useIPLDataContext } from "@/components/data-provider";
 import { Card, CardContent } from "@/components/ui/card";
 import { TeamBadge } from "@/components/ui/team-badge";
 import { Button } from "@/components/ui/button";
 import { formatDate } from "@/utils";
 
 export default function UpcomingMatches() {
-  const { data, isLoading, error, refetch } = useIPLData();
+  const { data, isLoading, error, refetch } = useIPLDataContext();
 
   if (isLoading) {
     return (
