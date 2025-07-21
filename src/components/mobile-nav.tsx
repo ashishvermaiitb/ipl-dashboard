@@ -13,7 +13,7 @@ export default function MobileNav() {
     <div className="md:hidden">
       <button
         onClick={toggleMenu}
-        className="focus:outline-none"
+        className="focus:outline-none text-white"
         aria-label={isOpen ? "Close menu" : "Open menu"}
       >
         <svg
@@ -42,13 +42,15 @@ export default function MobileNav() {
       </button>
 
       {isOpen && (
-        <div className="fixed inset-0 z-50 bg-white">
+        <div className="fixed inset-0 z-50 bg-white dark:bg-gray-900 mobile-nav">
           <div className="flex flex-col h-full">
-            <div className="flex items-center justify-between p-4 border-b">
-              <h2 className="text-xl font-bold">Menu</h2>
+            <div className="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-800">
+              <h2 className="text-xl font-bold text-gray-900 dark:text-white">
+                Menu
+              </h2>
               <button
                 onClick={toggleMenu}
-                className="focus:outline-none"
+                className="focus:outline-none text-gray-600 dark:text-gray-300"
                 aria-label="Close menu"
               >
                 <svg
@@ -73,7 +75,7 @@ export default function MobileNav() {
                 <li>
                   <a
                     href="#live"
-                    className="block text-lg font-medium hover:text-blue-600"
+                    className="block text-lg font-medium text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400"
                     onClick={toggleMenu}
                   >
                     Live Match
@@ -82,7 +84,7 @@ export default function MobileNav() {
                 <li>
                   <a
                     href="#upcoming"
-                    className="block text-lg font-medium hover:text-blue-600"
+                    className="block text-lg font-medium text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400"
                     onClick={toggleMenu}
                   >
                     Upcoming Matches
@@ -91,7 +93,7 @@ export default function MobileNav() {
                 <li>
                   <a
                     href="#points"
-                    className="block text-lg font-medium hover:text-blue-600"
+                    className="block text-lg font-medium text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400"
                     onClick={toggleMenu}
                   >
                     Points Table
@@ -100,7 +102,7 @@ export default function MobileNav() {
                 <li>
                   <a
                     href="#schedule"
-                    className="block text-lg font-medium hover:text-blue-600"
+                    className="block text-lg font-medium text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400"
                     onClick={toggleMenu}
                   >
                     Match Schedule
@@ -109,7 +111,7 @@ export default function MobileNav() {
               </ul>
             </nav>
 
-            <div className="p-4 border-t text-sm text-gray-500">
+            <div className="p-4 border-t border-gray-200 dark:border-gray-800 text-sm text-gray-600 dark:text-gray-400">
               © 2025 IPL T20 Live Dashboard
             </div>
           </div>

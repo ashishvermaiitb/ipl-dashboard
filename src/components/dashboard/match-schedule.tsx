@@ -1,22 +1,25 @@
 "use client";
 
 import { useState } from "react";
-import { useIPLData } from "@/hooks/use-ipl-data";
+import { useIPLDataContext } from "@/components/data-provider";
 import { TeamBadge } from "@/components/ui/team-badge";
 import { Button } from "@/components/ui/button";
 import { formatDate } from "@/utils";
 import { MatchStatus } from "@/types/ipl";
 
 export default function MatchSchedule() {
-  const { data, isLoading, error, refetch } = useIPLData();
+  const { data, isLoading, error, refetch } = useIPLDataContext();
   const [filter, setFilter] = useState<MatchStatus | "all">("all");
 
   if (isLoading) {
     return (
       <div className="animate-pulse">
-        <div className="h-10 bg-gray-200 rounded w-full mb-4"></div>
+        <div className="h-10 bg-gray-200 rounded w-full mb-4 dark:bg-gray-700"></div>
         {[...Array(5)].map((_, i) => (
-          <div key={i} className="h-24 bg-gray-200 rounded w-full mb-3"></div>
+          <div
+            key={i}
+            className="h-24 bg-gray-200 rounded w-full mb-3 dark:bg-gray-700"
+          ></div>
         ))}
       </div>
     );
@@ -24,8 +27,8 @@ export default function MatchSchedule() {
 
   if (error) {
     return (
-      <div className="bg-red-50 border border-red-200 rounded-lg p-4">
-        <p className="text-red-500 mb-4">{error.message}</p>
+      <div className="bg-red-50 border border-red-200 rounded-lg p-4 dark:bg-red-900/20 dark:border-red-800">
+        <p className="text-red-500 mb-4 dark:text-red-400">{error.message}</p>
         <Button onClick={() => refetch()}>Try Again</Button>
       </div>
     );
@@ -33,7 +36,7 @@ export default function MatchSchedule() {
 
   if (!data || !data.completeSchedule || data.completeSchedule.length === 0) {
     return (
-      <div className="text-gray-500">
+      <div className="text-gray-600 dark:text-gray-300">
         Schedule data is not available at the moment.
       </div>
     );
@@ -91,38 +94,39 @@ export default function MatchSchedule() {
       </div>
 
       {filteredMatches.length === 0 ? (
-        <div className="text-gray-500 p-4 text-center border rounded-md">
+        <div className="text-gray-600 p-4 text-center border rounded-md dark:text-gray-300 dark:border-gray-700">
           No matches found for the selected filter.
         </div>
       ) : (
         <div className="space-y-6">
           {sortedDates.map((date) => (
             <div key={date}>
-              <h3 className="text-sm font-semibold mb-2 sticky top-0 bg-white py-2">
+              <h3 className="match-date-header text-sm font-semibold mb-2 sticky top-0 bg-white py-2 text-gray-900 dark:text-white dark:bg-gray-900">
                 {formatDate(date)}
               </h3>
               <div className="space-y-3">
                 {matchesByDate[date].map((match) => (
                   <div
                     key={match.id}
-                    className={`border rounded-lg p-3 ${
+                    className={`border rounded-lg p-3 match-card ${
                       match.status === MatchStatus.LIVE
-                        ? "border-blue-500 bg-blue-50"
+                        ? "border-blue-500 bg-blue-50 dark:border-blue-700 dark:bg-blue-900/20"
                         : match.status === MatchStatus.COMPLETED
-                        ? "border-gray-300 bg-gray-50"
-                        : "border-gray-200"
+                        ? "border-gray-300 bg-gray-50 dark:border-gray-700 dark:bg-gray-800/50"
+                        : "border-gray-200 dark:border-gray-700"
                     }`}
                   >
                     <div className="flex justify-between items-center mb-2">
-                      <div className="text-sm font-medium">{match.time}</div>
+                      <div className="text-sm font-medium match-time text-gray-800 dark:text-gray-200">
+                        {match.time}
+                      </div>
                       <div
-                        className={`text-xs px-2 py-0.5 rounded-full 
-                        ${
+                        className={`text-xs px-2 py-0.5 rounded-full status-badge ${
                           match.status === MatchStatus.LIVE
-                            ? "bg-blue-100 text-blue-800"
+                            ? "status-live"
                             : match.status === MatchStatus.COMPLETED
-                            ? "bg-gray-100 text-gray-800"
-                            : "bg-green-100 text-green-800"
+                            ? "status-completed"
+                            : "status-upcoming"
                         }`}
                       >
                         {match.status === MatchStatus.LIVE
@@ -134,17 +138,23 @@ export default function MatchSchedule() {
                     </div>
 
                     <div className="flex justify-between items-center mb-3">
-                      <TeamBadge team={match.team1} showName />
-                      <span className="text-xs font-bold text-gray-400">
+                      <div className="team-name">
+                        <TeamBadge team={match.team1} showName />
+                      </div>
+                      <span className="text-xs font-bold text-gray-600 dark:text-gray-400">
                         VS
                       </span>
-                      <TeamBadge team={match.team2} showName />
+                      <div className="team-name">
+                        <TeamBadge team={match.team2} showName />
+                      </div>
                     </div>
 
-                    <div className="text-xs text-gray-500">{match.venue}</div>
+                    <div className="text-xs match-venue text-gray-600 dark:text-gray-400">
+                      {match.venue}
+                    </div>
 
                     {match.result && (
-                      <div className="mt-2 text-sm font-medium">
+                      <div className="mt-2 text-sm font-medium text-gray-800 dark:text-gray-300">
                         {match.result}
                       </div>
                     )}

@@ -1,4 +1,3 @@
-// src/utils/api-scraper.ts
 import { IPLData } from "@/types/ipl";
 import { dummyData } from "./dummy-data";
 

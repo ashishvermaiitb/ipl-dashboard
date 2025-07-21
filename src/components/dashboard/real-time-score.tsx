@@ -74,10 +74,12 @@ export default function RealTimeScore({
   const isTeam2Batting = !!liveData.team2Score;
 
   return (
-    <div className="p-3 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg border border-blue-100">
+    <div className="p-3 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg border border-blue-100 dark:from-blue-900/20 dark:to-indigo-900/20 dark:border-blue-800/50">
       <div className="flex justify-between items-center mb-3">
-        <h3 className="text-sm font-semibold">LIVE SCORE</h3>
-        <div className="flex items-center gap-2 text-xs text-gray-500">
+        <h3 className="text-sm font-semibold text-gray-900 dark:text-white">
+          LIVE SCORE
+        </h3>
+        <div className="flex items-center gap-2 text-xs text-gray-700 dark:text-gray-300">
           <span>Refreshing in {countdown}s</span>
           {loading && <Loading size="sm" />}
         </div>
@@ -91,7 +93,9 @@ export default function RealTimeScore({
               <span className="h-2 w-2 rounded-full bg-red-500"></span>
             )}
           </div>
-          <div className="font-bold">{formatScore(liveData.team1Score)}</div>
+          <div className="font-bold text-gray-900 dark:text-white">
+            {formatScore(liveData.team1Score)}
+          </div>
         </div>
 
         <div className="flex items-center justify-between">
@@ -101,14 +105,18 @@ export default function RealTimeScore({
               <span className="h-2 w-2 rounded-full bg-red-500"></span>
             )}
           </div>
-          <div className="font-bold">{formatScore(liveData.team2Score)}</div>
+          <div className="font-bold text-gray-900 dark:text-white">
+            {formatScore(liveData.team2Score)}
+          </div>
         </div>
       </div>
 
       {/* Recent Overs */}
       {liveData.recentOvers && liveData.recentOvers.length > 0 && (
-        <div className="mt-3 pt-3 border-t border-blue-100">
-          <h4 className="text-xs font-semibold mb-1">RECENT OVERS</h4>
+        <div className="mt-3 pt-3 border-t border-blue-100 dark:border-blue-800/50">
+          <h4 className="text-xs font-semibold mb-1 text-gray-800 dark:text-gray-200">
+            RECENT OVERS
+          </h4>
           <div className="flex flex-wrap gap-1">
             {liveData.recentOvers.flatMap((over, idx) =>
               over.runs.map((run, i) => (
@@ -117,12 +125,12 @@ export default function RealTimeScore({
                   className={`w-5 h-5 flex items-center justify-center rounded-full text-xs
                     ${
                       run === "W"
-                        ? "bg-red-100 text-red-600"
+                        ? "bg-red-100 text-red-600 dark:bg-red-900/30 dark:text-red-400"
                         : run === 4
-                        ? "bg-blue-100 text-blue-600"
+                        ? "bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400"
                         : run === 6
-                        ? "bg-purple-100 text-purple-600"
-                        : "bg-gray-100 text-gray-600"
+                        ? "bg-purple-100 text-purple-600 dark:bg-purple-900/30 dark:text-purple-400"
+                        : "bg-gray-100 text-gray-600 dark:bg-gray-800 dark:text-gray-300"
                     }`}
                 >
                   {run}
@@ -134,7 +142,7 @@ export default function RealTimeScore({
       )}
 
       {/* Last Updated */}
-      <div className="mt-3 text-xs text-gray-500 text-right">
+      <div className="mt-3 text-xs text-gray-700 dark:text-gray-400 text-right">
         Last updated: {lastUpdated.toLocaleTimeString()}
       </div>
     </div>

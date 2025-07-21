@@ -1,4 +1,3 @@
-// src/components/ui/team-badge.tsx
 import Image from "next/image";
 import { Team } from "@/types/ipl";
 import { cn } from "@/utils/cn";
@@ -33,11 +32,11 @@ export function TeamBadge({
   return (
     <div className={cn("flex items-center gap-2", className)}>
       <div
-        className="relative flex-shrink-0 rounded-full border overflow-hidden"
+        className="relative flex-shrink-0 rounded-full border-2 overflow-hidden team-badge"
         style={{
           width: logoSize,
           height: logoSize,
-          borderColor: team.color || "#ccc",
+          borderColor: team.color || "#555",
         }}
       >
         {team.logo ? (
@@ -51,7 +50,7 @@ export function TeamBadge({
         ) : (
           <div
             className="w-full h-full flex items-center justify-center font-bold text-white"
-            style={{ backgroundColor: team.color || "#ccc" }}
+            style={{ backgroundColor: team.color || "#555" }}
           >
             {team.shortName?.substring(0, 2)}
           </div>
@@ -59,7 +58,12 @@ export function TeamBadge({
       </div>
 
       {showName && (
-        <span className={cn("font-medium", textSizeMap[size])}>
+        <span
+          className={cn(
+            "font-medium text-gray-900 dark:text-gray-100 team-name",
+            textSizeMap[size]
+          )}
+        >
           {team.shortName || team.name}
         </span>
       )}

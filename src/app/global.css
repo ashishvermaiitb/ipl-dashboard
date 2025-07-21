@@ -1,0 +1,256 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 240, 240, 240;
+  --background-end-rgb: 255, 255, 255;
+  --primary-color: 37, 99, 235;
+  --primary-color-dark: 30, 64, 175;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 30, 30, 30;
+    --primary-color: 59, 130, 246;
+    --primary-color-dark: 37, 99, 235;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+
+/* Improved section headers */
+section h2 {
+  color: #111827 !important; /* dark gray, almost black */
+  font-weight: 700 !important;
+  font-size: 1.25rem !important;
+  line-height: 1.75rem !important;
+  letter-spacing: -0.025em !important;
+  margin-bottom: 1rem !important;
+}
+
+.dark section h2 {
+  color: #f3f4f6 !important; /* white for dark mode */
+}
+
+/* Improved text contrast */
+.text-gray-500 {
+  color: #4b5563 !important; /* darker gray for better contrast */
+}
+
+.dark .text-gray-500 {
+  color: #9ca3af !important;
+}
+
+.text-gray-400 {
+  color: #4b5563 !important; /* made darker for better visibility */
+}
+
+.dark .text-gray-400 {
+  color: #9ca3af !important;
+}
+
+/* Match schedule specific styles */
+.match-date-header {
+  color: #111827 !important;
+  font-weight: 600 !important;
+  background-color: white !important;
+  padding: 0.5rem 0 !important;
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 10 !important;
+}
+
+.dark .match-date-header {
+  color: #f3f4f6 !important;
+  background-color: #111827 !important;
+}
+
+.match-time {
+  color: #111827 !important;
+  font-weight: 500 !important;
+}
+
+.dark .match-time {
+  color: #e5e7eb !important;
+}
+
+.match-venue {
+  color: #4b5563 !important;
+  font-weight: 400 !important;
+}
+
+.dark .match-venue {
+  color: #9ca3af !important;
+}
+
+.status-badge {
+  font-weight: 600 !important;
+  padding: 0.25rem 0.75rem !important;
+  border-radius: 9999px !important;
+  font-size: 0.75rem !important;
+  line-height: 1rem !important;
+}
+
+.status-live {
+  background-color: rgba(239, 68, 68, 0.15) !important;
+  color: rgb(185, 28, 28) !important;
+}
+
+.dark .status-live {
+  background-color: rgba(239, 68, 68, 0.25) !important;
+  color: rgb(248, 113, 113) !important;
+}
+
+.status-upcoming {
+  background-color: rgba(16, 185, 129, 0.15) !important;
+  color: rgb(5, 150, 105) !important;
+}
+
+.dark .status-upcoming {
+  background-color: rgba(16, 185, 129, 0.25) !important;
+  color: rgb(52, 211, 153) !important;
+}
+
+.status-completed {
+  background-color: rgba(107, 114, 128, 0.15) !important;
+  color: rgb(55, 65, 81) !important;
+}
+
+.dark .status-completed {
+  background-color: rgba(107, 114, 128, 0.25) !important;
+  color: rgb(209, 213, 219) !important;
+}
+
+/* Better contrast for headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #111827 !important;
+}
+
+.dark h1,
+.dark h2,
+.dark h3,
+.dark h4,
+.dark h5,
+.dark h6 {
+  color: #f3f4f6 !important;
+}
+
+/* Improved card styling */
+.card,
+.bg-white {
+  background-color: white !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+}
+
+.dark .card,
+.dark .bg-white {
+  background-color: #1f2937 !important;
+  color: #f3f4f6 !important;
+}
+
+/* Improved button contrast */
+.btn,
+button {
+  font-weight: 500 !important;
+}
+
+/* Team badge enhancements */
+.team-badge {
+  border: 2px solid rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Team name color */
+.team-name {
+  color: #111827 !important;
+  font-weight: 500 !important;
+}
+
+.dark .team-name {
+  color: #f3f4f6 !important;
+}
+
+/* Table improvements */
+table th {
+  color: #111827 !important;
+  font-weight: 600 !important;
+  background-color: #f3f4f6 !important;
+}
+
+table td {
+  color: #374151 !important;
+}
+
+.dark table th {
+  color: #f3f4f6 !important;
+  background-color: #374151 !important;
+}
+
+.dark table td {
+  color: #d1d5db !important;
+}
+
+/* Better visibility for links */
+a {
+  color: rgb(var(--primary-color)) !important;
+  font-weight: 500 !important;
+}
+
+a:hover {
+  color: rgb(var(--primary-color-dark)) !important;
+}
+
+/* Improve mobile navigation */
+.mobile-nav a {
+  color: #111827 !important;
+  font-weight: 500 !important;
+}
+
+.dark .mobile-nav a {
+  color: #f3f4f6 !important;
+}
+
+/* Match card styling improvements */
+.match-card {
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Points table styling */
+.points-table th {
+  background-color: #f3f4f6 !important;
+  color: #111827 !important;
+}
+
+.dark .points-table th {
+  background-color: #374151 !important;
+  color: #f3f4f6 !important;
+}
+
+.playoff-zone {
+  background-color: rgba(59, 130, 246, 0.1) !important;
+}
+
+/* Loading state styling */
+.loading-pulse {
+  background-color: #e5e7eb !important;
+}
+
+.dark .loading-pulse {
+  background-color: #4b5563 !important;
+}

@@ -1,4 +1,3 @@
-// src/components/ui/button.tsx
 import { ReactNode, ButtonHTMLAttributes } from "react";
 import { VariantProps, cva } from "class-variance-authority";
 import { cn } from "@/utils/cn";
@@ -9,11 +8,12 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          "bg-blue-600 text-white hover:bg-blue-700 focus-visible:ring-blue-500",
+          "bg-blue-600 text-white hover:bg-blue-700 focus-visible:ring-blue-500 dark:bg-blue-500 dark:hover:bg-blue-600",
         outline:
-          "border border-gray-300 bg-transparent hover:bg-gray-50 text-gray-700 focus-visible:ring-gray-400",
-        ghost: "hover:bg-gray-100 text-gray-700 focus-visible:ring-gray-400",
-        link: "text-blue-600 hover:underline focus-visible:ring-blue-500 p-0 h-auto",
+          "border border-gray-400 bg-transparent hover:bg-gray-50 text-gray-900 focus-visible:ring-gray-600 dark:border-gray-600 dark:text-gray-100 dark:hover:bg-gray-800",
+        ghost:
+          "hover:bg-gray-100 text-gray-900 focus-visible:ring-gray-600 dark:text-gray-100 dark:hover:bg-gray-800",
+        link: "text-blue-600 hover:underline focus-visible:ring-blue-500 p-0 h-auto dark:text-blue-400",
       },
       size: {
         default: "h-10 py-2 px-4",
