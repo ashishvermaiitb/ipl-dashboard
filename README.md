@@ -4,28 +4,28 @@ A responsive dashboard application that displays real-time IPL T20 match informa
 
 ## 🏏 Features
 
-Live Match Updates: Real-time scores and match details when games are in progress
-Upcoming Matches: Display of upcoming fixtures with timings and venue details
-Points Table: Current IPL standings with wins, losses, points, and net run rate
-Complete Schedule: Full match schedule for the season
-Mobile-First Design: Optimized for smartphones and tablets
-Real-time Data: Periodic updates to reflect current match status
+- Live Match Updates: Real-time scores and match details when games are in progress
+- Upcoming Matches: Display of upcoming fixtures with timings and venue details
+- Points Table: Current IPL standings with wins, losses, points, and net run rate
+- Complete Schedule: Full match schedule for the season
+- Mobile-First Design: Optimized for smartphones and tablets
+- Real-time Data: Periodic updates to reflect current match status
 
 ## 🛠️ Tech Stack
 
-Next.js 14: React framework with App Router
-TypeScript: Type-safe development
-Tailwind CSS: Utility-first CSS framework
-Node.js API Routes: Server-side data fetching and scraping
-Cheerio: Server-side HTML parsing for web scraping
-Axios: HTTP client for API requests
-Lucide React: Icon library
+- Next.js 14: React framework with App Router
+- TypeScript: Type-safe development
+- Tailwind CSS: Utility-first CSS framework
+- Node.js API Routes: Server-side data fetching and scraping
+- Cheerio: Server-side HTML parsing for web scraping
+- Axios: HTTP client for API requests
+- Lucide React: Icon library
 
 ## 🚀 Getting Started
 
 ### Prerequisites
 
-Node.js 18+
+Node.js 18+  
 npm or yarn
 
 ### Installation
@@ -53,6 +53,7 @@ npm run dev
 
 ## 📁 Project Structure
 
+```bash
 src/
 ├── app/
 │ ├── api/scrape/ # API routes for data fetching
@@ -65,6 +66,7 @@ src/
 ├── lib/ # Utility libraries
 ├── types/ # TypeScript type definitions
 └── utils/ # Helper functions
+```
 
 ## 🔄 Data Sources
 
@@ -88,7 +90,7 @@ This dashboard is built with a mobile-first approach, ensuring:
 
 Available Scripts
 
-npm run dev - Start development server
-npm run build - Build for production
-npm run start - Start production server
+npm run dev - Start development server  
+npm run build - Build for production  
+npm run start - Start production server  
 npm run lint - Run ESLint
