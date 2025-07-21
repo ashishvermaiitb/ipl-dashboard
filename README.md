@@ -1,6 +1,7 @@
 # IPL T20 Live Dashboard
 
-A responsive dashboard application that displays real-time IPL T20 match information, including live matches, upcoming fixtures, points table, and complete schedule.
+A responsive dashboard application that displays real-time IPL T20 match information, including live matches, upcoming fixtures, points table, and complete schedule.  
+Fallback logic: rendering ui with dummy data in case of issues with scraping the data, or failure from api fetch
 
 ## 🏏 Features
 

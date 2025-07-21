@@ -91,7 +91,9 @@ export default function TeamStats() {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
               <div className="p-3 bg-gray-50 rounded-md text-center">
                 <div className="text-xs text-gray-500 mb-1">MATCHES</div>
-                <div className="font-bold">{selectedTeamStats.matches}</div>
+                <div className="font-bold text-gray-500">
+                  {selectedTeamStats.matches}
+                </div>
               </div>
               <div className="p-3 bg-blue-50 rounded-md text-center">
                 <div className="text-xs text-gray-500 mb-1">WON</div>
