@@ -469,7 +469,6 @@ function getMonthNumber(month: string): string {
     Feb: "02",
     Mar: "03",
     Apr: "04",
-    May: "05",
     Jun: "06",
     Jul: "07",
     Aug: "08",

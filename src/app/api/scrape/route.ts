@@ -1,11 +1,12 @@
 import { NextResponse } from "next/server";
 import { getIPLData } from "@/utils/api-scraper";
 import { dummyData } from "@/utils/dummy-data";
+import type { IPLData } from "@/types/ipl";
 
 // In-memory cache
-let cachedData = null;
+let cachedData: IPLData | null = null;
 let lastFetchTime = 0;
-const CACHE_TTL = 5 * 60 * 1000; // 5 minutes in milliseconds
+const CACHE_TTL = 5 * 60 * 1000; // 5 minutes
 
 /**
  * GET handler for the scrape API route
