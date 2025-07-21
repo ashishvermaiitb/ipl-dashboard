@@ -14,90 +14,44 @@ export const formatDate = (dateString: string): string => {
     return "Tomorrow";
   }
 
-  return format(date, "MMM dd, yyyy");
+  return format(date, "EEE, d MMM yyyy");
 };
 
 /**
- * Format time for display
+ * Get team color based on team ID or use fallback
  */
-export const formatTime = (timeString: string): string => {
-  return timeString;
-};
-
-/**
- * Get team color by team name
- */
-export const getTeamColor = (teamName: string): string => {
+export const getTeamColor = (teamId: string, fallback = "#ccc"): string => {
   const teamColors: Record<string, string> = {
-    "Mumbai Indians": "#004BA0",
-    "Chennai Super Kings": "#F9CD05",
-    "Royal Challengers Bangalore": "#EC1C24",
-    "Kolkata Knight Riders": "#3A225D",
-    "Sunrisers Hyderabad": "#FF822A",
-    "Delhi Capitals": "#282968",
-    "Punjab Kings": "#ED1B24",
-    "Rajasthan Royals": "#254AA5",
-    "Gujarat Titans": "#1B2951",
-    "Lucknow Super Giants": "#1B5099",
+    csk: "#FFFF3C",
+    mi: "#004BA0",
+    rcb: "#FF0000",
+    srh: "#FF822A",
+    dc: "#0078BC",
+    kkr: "#3A225D",
+    rr: "#EA1A85",
+    pbks: "#D11D9B",
+    gt: "#1C1C1C",
+    lsg: "#A72056",
   };
 
-  return teamColors[teamName] || "#6B7280";
+  return teamColors[teamId] || fallback;
 };
 
 /**
- * Get short team name
+ * Calculate required run rate
  */
-export const getShortTeamName = (teamName: string): string => {
-  const shortNames: Record<string, string> = {
-    "Mumbai Indians": "MI",
-    "Chennai Super Kings": "CSK",
-    "Royal Challengers Bangalore": "RCB",
-    "Kolkata Knight Riders": "KKR",
-    "Sunrisers Hyderabad": "SRH",
-    "Delhi Capitals": "DC",
-    "Punjab Kings": "PBKS",
-    "Rajasthan Royals": "RR",
-    "Gujarat Titans": "GT",
-    "Lucknow Super Giants": "LSG",
-  };
+export const calculateRequiredRunRate = (
+  targetScore: number,
+  currentScore: number,
+  totalOvers: number,
+  oversCompleted: number
+): number => {
+  const runsRequired = targetScore - currentScore;
+  const oversRemaining = totalOvers - oversCompleted;
 
-  return shortNames[teamName] || teamName.substring(0, 3).toUpperCase();
-};
-
-/**
- * Calculate win percentage
- */
-export const calculateWinPercentage = (won: number, played: number): number => {
-  if (played === 0) return 0;
-  return Math.round((won / played) * 100);
-};
-
-/**
- * Format net run rate
- */
-export const formatNetRunRate = (nrr: number): string => {
-  return nrr >= 0 ? `+${nrr.toFixed(3)}` : nrr.toFixed(3);
-};
-
-/**
- * Check if match is today
- */
-export const isMatchToday = (matchDate: string): boolean => {
-  return isToday(parseISO(matchDate));
-};
-
-/**
- * Get match status color
- */
-export const getMatchStatusColor = (status: string): string => {
-  switch (status) {
-    case "live":
-      return "text-red-500";
-    case "upcoming":
-      return "text-blue-500";
-    case "completed":
-      return "text-green-500";
-    default:
-      return "text-gray-500";
+  if (oversRemaining <= 0 || runsRequired <= 0) {
+    return 0;
   }
+
+  return runsRequired / oversRemaining;
 };
